@@ -1,0 +1,19 @@
+bmegportal :
+    build: bmegportal
+    ports: 
+        - "8000:8000"
+    links:
+        - mongo
+        - memcached
+        - titan
+        - elasticsearch
+elasticsearch:
+    image: dockerfile/elasticsearch
+titan:
+    build: titan
+mongo: 
+    image: mongo
+
+memcached:
+    image: sylvainlasnier/memcached
+
