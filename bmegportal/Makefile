@@ -38,7 +38,12 @@ edit:
 	\
 	mv 4.tmp memcached_check.py ;
 	\
-	rm -f 1.tmp 2.tmp 3.tmp 4.tmp ;
+	sed -e "s,config.read('bmeg.cfg'),config.read('/var/www/wsgi/bmeg.cfg')," BmegSigDbQueryHandler.py \
+	> 5.tmp ;
+	\
+	mv 5.tmp BmegSigDbQueryHandler.py ;
+	\
+	rm -f 1.tmp 2.tmp 3.tmp 4.tmp 5.tmp ;
 	\
 
 deploy: update edit deploy_wsgi deploy_client
@@ -51,6 +56,11 @@ deploy_wsgi:
 	rsync -avP ./*.cfg $(APACHE_WSGI_DIR)/. ;
 
 deploy_client:
+	rsync -avP static/index.* $(APACHE_STATIC_DIR)/. ;
+	rsync -avP static/images $(APACHE_STATIC_DIR)/. ;
+	rsync -avP static/*.css $(APACHE_STATIC_DIR)/. ;
+	rsync -avP static/*.js $(APACHE_STATIC_DIR)/. ;
+	rsync -avP static/bower_components $(APACHE_STATIC_DIR)/. ;
 	rsync -avP static/$(PAGE_NAME).html $(APACHE_STATIC_DIR)/. ;
 	rsync -avP --exclude="static/$(PAGE_NAME)/scripts/static.js" --exclude="static/$(PAGE_NAME)/data/" --delete-excluded static/$(PAGE_NAME) $(APACHE_STATIC_DIR)/. ;
 	rsync -avP ../staticJs/static.js $(APACHE_STATIC_DIR)/$(PAGE_NAME)/scripts/.

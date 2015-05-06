@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!-- using example from: https://stackoverflow.com/questions/27525686/create-a-starter-project-for-material-angular -->
+<html>
+	<head>
+		<link rel="icon" href="images/bmeg_logo_2_heatmaps_16px.png" type="image/x-icon">
+		<title>Welcome To The BMEG Portal</title>
+		<meta charset="utf-8" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+		<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+		<!-- <link type="text/css" rel="stylesheet" href="index.css" /> -->
+		<!-- <link type="text/css" rel="stylesheet" href="example.css" /> -->
+
+		<link rel="stylesheet" href="jquery.contextMenu.css" type="text/css" />
+
+		<noscript>
+			<div align="center">
+				<p style="color:black;background-color:red;font-size:18pt">
+					This website requires JavaScript.  Please turn on JavaScript and then <a href="">try it again</a>.
+				</p>
+			</div>
+		</noscript>
+
+		<!-- google analytics -->
+		<script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] ||
+                function() {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-58145199-1', 'auto');
+            ga('send', 'pageview');
+		</script>
+
+		<link rel="stylesheet" href="observation_deck.css" type="text/css" />
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-aria/angular-aria.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/hammerjs/hammer.js"></script>
+		<script src="bower_components/angular-material/angular-material.js"></script>
+		<script src="bower_components/angular-messages/angular-messages.js"></script>
+		<script type="text/javascript" src="observation_deck_plugin.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</head>
+	<body ng-app="ngDemo1">
+		<div ng-controller="SideNavCtrl as menu">
+			<section layout="row">
+				<!-- <md-sidenav style="overflow: hidden; display: flex;" layout='column' class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('md')"> -->
+				<md-sidenav style="overflow: hidden; display: flex;" layout='column' class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('md')">
+					<!-- <md-toolbar class="md-theme-indigo"> -->
+					<md-toolbar style="min-height: 64px; max-height:64px;" layout="row" class="md-theme-indigo">
+						<h1 class="md-toolbar-tools">
+						<md-button ng-controller="LeftCtrl" ng-click="close()" class="md-primary" aria-label="Time" hide-gt-md>
+							<md-icon icon="images/ic_menu_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+						</md-button><img src="images/bmeg_logo_2.png" height='64px' alt="bmeg_logo"></h1>
+					</md-toolbar>
+					<md-content flex style="overflow: auto;" ng-cloak ng-controller="LeftCtrl">
+						<!-- <md-button ng-click="close()" class="md-primary" hide-gt-md>
+						Close Menu
+						</md-button> -->
+						<!-- <p show-gt-md>
+						This sidenav is locked open on your device. To go back to the default behavior,
+						narrow your display.
+						</p> -->
+						<div ng-repeat="section in menu.sections">
+							<md-button class="menu-item menu-title md-menu-item" ng-click="menu.toggleSelectSection(section)" md-highlight="menu.isSectionSelected(section)" md-ink-ripple="#bbb">
+								{{section.name}}
+							</md-button>
+						</div>
+						<md-content ng-hide="true" class="md-padding">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.
+							</p>
+							<p>
+								Vivamus fermentum semper porta. Nunc diam velit, adipiscing ut tristique vitae, sagittis vel odio. Maecenas convallis ullamcorper ultricies. Curabitur ornare, ligula semper consectetur sagittis, nisi diam iaculis velit, id fringilla sem nunc vel mi. Nam dictum, odio nec pretium volutpat, arcu ante placerat erat, non tristique elit urna et turpis. Quisque mi metus, ornare sit amet fermentum et, tincidunt et orci. Fusce eget orci a orci congue vestibulum. Ut dolor diam, elementum et vestibulum eu, porttitor vel elit. Curabitur venenatis pulvinar tellus gravida ornare. Sed et erat faucibus nunc euismod ultricies ut id justo. Nullam cursus suscipit nisi, et ultrices justo sodales nec. Fusce venenatis facilisis lectus ac semper. Aliquam at massa ipsum. Quisque bibendum purus convallis nulla ultrices ultricies. Nullam aliquam, mi eu aliquam tincidunt, purus velit laoreet tortor, viverra pretium nisi quam vitae mi. Fusce vel volutpat elit. Nam sagittis nisi dui.
+							</p>
+							<p>
+								Suspendisse lectus leo, consectetur in tempor sit amet, placerat quis neque. Etiam luctus porttitor lorem, sed suscipit est rutrum non. Curabitur lobortis nisl a enim congue semper. Aenean commodo ultrices imperdiet. Vestibulum ut justo vel sapien venenatis tincidunt. Phasellus eget dolor sit amet ipsum dapibus condimentum vitae quis lectus. Aliquam ut massa in turpis dapibus convallis. Praesent elit lacus, vestibulum at malesuada et, ornare et est. Ut augue nunc, sodales ut euismod non, adipiscing vitae orci. Mauris ut placerat justo. Mauris in ultricies enim. Quisque nec est eleifend nulla ultrices egestas quis ut quam. Donec sollicitudin lectus a mauris pulvinar id aliquam urna cursus. Cras quis ligula sem, vel elementum mi. Phasellus non ullamcorper urna.
+							</p>
+							<p>
+								Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In euismod ultrices facilisis. Vestibulum porta sapien adipiscing augue congue id pretium lectus molestie. Proin quis dictum nisl. Morbi id quam sapien, sed vestibulum sem. Duis elementum rutrum mauris sed convallis. Proin vestibulum magna mi. Aenean tristique hendrerit magna, ac facilisis nulla hendrerit ut. Sed non tortor sodales quam auctor elementum. Donec hendrerit nunc eget elit pharetra pulvinar. Suspendisse id tempus tortor. Aenean luctus, elit commodo laoreet commodo, justo nisi consequat massa, sed vulputate quam urna quis eros. Donec vel.
+							</p>
+						</md-content>
+					</md-content>
+				</md-sidenav>
+
+				<div layout="column" layout-fill tabIndex="-1">
+					<!-- main content here -->
+					<md-toolbar style="min-height: 64px; max-height:64px;" layout="column" class="md-theme-indigo">
+						<h1 class="md-toolbar-tools">
+						<md-button ng-click="toggleLeft()" class="md-primary" aria-label="Time" hide-gt-md>
+							<md-icon icon="images/ic_menu_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+						</md-button>UCSC BioMedical Evidence Graph</h1>
+					</md-toolbar>
+
+					<md-content ng-show="menu.isSectionNameSelected('About BMEG')" class='md-padding'>
+						<p align='center' >
+							<img src="images/bmeg_logo_2.png" alt="bmeg_logo" width='400px'>
+						</p>
+						<h3>What is a BMEG?</h3>
+						<p>
+							Cancer is a disease of the genome, caused by disruptions in a person's DNA. Orders of magnitude decreases in price and increases in sequencing throughput enabled sequencing of hundreds of genomes. This will launch a new phase bf "Precision Medicine," where molecular markers can guide therapies tailored to patients. The genomics revolution is now systematically characterizing every somatic change in every tumor for large cohorts (>300 patients). Despite some successes, predicting cancer outcomes based on molecular signatures remains a major challenge. This proposal aims at obliterating several key roadblocks stymieing progress. First, the raw sequence data is not particularly well-suited for use in developing predictive models. Therefore, gene- and pathway-level evidence will be derived from CGHub to significantly increase the utility of the information for biomedical discovery. The information will be collected in a Social Graph technology framework like Facebook to scale to billions of interconnected objects called the Biomedical Evidence Graph (BMEG). Second, the datasets are so large they are impractical to move around on the internet. Thus, an environment will be created within which researchers can move their code to the vast amounts of data within the BMEG. Third, prediction challenges will be created based on cancer genomics datasets and patient outcomes. While there have been a few successes in predicting outcomes, current approaches suffer from reproducibility and robustness when applied to unseen data. This activity will reach a broad community of algorithm developers, promote transparency and sharing of bioinformatics code, and create a strong network effect to crowd-source the development of the best models for biological discovery. The system constructed will be focused around the investigation of cancer outcomes but the entire pipeline will be of general utility for any number of genome-based projects including investigating any number of disease, stem cell properties, model organisms, and genome-wide association studies. RELEVANCE (See instructions): While we are accumulating vast amounts of information on cancer cells, we are still searching in the dark for clues about predicting treatment strategies. It is of paramount importance to accelerate computational discovery. The creation of the BMEG will catalyze community participation to uncover novel relationships to elucidate new fundamental biology on oncogenesis and therapeutic directions for treating this disease.
+						</p>
+					</md-content>
+
+					<md-content ng-show="menu.isSectionNameSelected('In The News')" class='md-padding'>
+						<h3>In The News</h3>
+						<ul>
+							<li>
+								<a target='_bmegOut' href='http://news.ucsc.edu/2013/06/cancer-big-data.html'>http://news.ucsc.edu/2013/06/cancer-big-data.html</a>
+							</li>
+							<li>
+								<a target='_bmegOut' href='https://www.genomeweb.com/informatics/ucsc-designing-social-network-type-model-analyzing-cancer-data'>https://www.genomeweb.com/informatics/ucsc-designing-social-network-type-model-analyzing-cancer-data</a>
+							</li>
+							<li>
+								<a target='_bmegOut' href='http://pharmaceuticalintelligence.com/2012/10/29/cancer-genomics-leading-the-way-by-cancer-genomics-program-at-uc-santa-cruz/'>http://pharmaceuticalintelligence.com/2012/10/29/cancer-genomics-leading-the-way-by-cancer-genomics-program-at-uc-santa-cruz/</a>
+							</li>
+							<li>
+								<a target='_bmegOut' href='http://phys.org/wire-news/132928262/major-grant-funds-ucsc-researchers-using-big-data-to-predict-can.html'>http://phys.org/wire-news/132928262/major-grant-funds-ucsc-researchers-using-big-data-to-predict-can.html</a>
+							</li>
+							<li>
+								<a target='_bmegOut' href='http://googleresearch.blogspot.fr/2014/07/facilitating-genomics-research-with.html'>http://googleresearch.blogspot.fr/2014/07/facilitating-genomics-research-with.html</a>
+							</li>
+
+						</ul>
+					</md-content>
+
+					<md-content ng-show="menu.isSectionNameSelected('DREAM Challenges')" class='md-padding'>
+						<p align='center' >
+							<img src="images/dream-logo.png" alt="dream_logo">
+						</p>
+						<dl>
+							<dt>
+								Somantic Mutation Challenge: <a target='_bmegOut' href='https://www.synapse.org/#!Synapse:syn312572'>link</a>
+							</dt>
+							<dd>
+								The goal of this somatic mutation calling (SMC) Challenge is to identify the most accurate mutation detection algorithms, and establish the state-of-the-art. The algorithms in this Challenge must use as input WGS data from tumour and normal samples and output mutation calls associated with cancer.
+							</dd>
+							<dt>
+								SMC DREAM HET: <a target='_bmegOut' href='https://www.synapse.org/#!Synapse:syn2813581'>link</a>
+							</dt>
+							<dd>
+								Tumors are composed of many different cell-types, ranging from the normal tissue micro-environment, infiltrating immune cells and tumour cells. And this group of tumour cells is itself intrinsically highly heterogeneous, driven by the rapid mutation rate of cancer cells to become a mixture of different sub-populations. Critically, these sub-populations have distinct clinical outcomes: some are more resistant to treatment, some are more likely to metastasize. These different types of cells, called subclones, have different sets of mutations in their DNA. Because some subclones evolve from others, many subclones share mutations. While it is increasingly easy to determine what mutations are present in the tumor, it remains very difficult to determine which subclones have which mutations. The task of assigning mutations to subclones is called subclonal reconstruction.
+							</dd>
+						</dl>
+					</md-content>
+
+					<md-content ng-show="menu.isSectionNameSelected('TCGA Live')" class='md-padding'>
+						<p align='center' >
+							<img src="images/tcga_logo.png" alt="tcga_logo">
+						</p>
+						<h3>TCGA Live</h3>
+						<p>
+							<a target='_bmegOut' href='https://www.synapse.org/#!Synapse:syn2812961'>link</a>
+						</p>
+					</md-content>
+
+					<md-content ng-show="menu.isSectionNameSelected('ICGC/TCGA PCAWG')" class='md-padding'>
+						<p align='center' >
+							<img src="images/logo_icgc.png" alt="icgc_logo">
+							<br>
+							<img src="images/tcga_logo.png" alt="tcga_logo">
+						</p>
+						<h3>ICGC/TCGA PCAWG</h3>
+						<p>
+							<a target='_bmegOut' href='http://pancancer.info/'>link</a>
+						</p>
+					</md-content>
+
+					<md-content ng-show="menu.isSectionNameSelected('Signature Query')" class='md-padding'>
+
+						<h3>Query the BMEG mRNA Expression Signatures</h3>
+						<p>
+							Search for signatures that place heavy weight on your query set of genes.
+						</p>
+						<div id='sigQueryDiv' align='center' ng-app='ngDemo1' ng-controller="querySetCtrl">
+
+							<form id='sigQueryForm' name='sigQueryForm'>
+								<!-- <input id='querySetText' name="querySetText" size="80" type="text" /> -->
+								<md-input-container flex>
+									<input id='querySetText' ng-model="querySet.unsplit" placeholder="space-separated list">
+								</md-input-container>
+								<br>
+								<!-- <input name="Submit" type="submit" value="Submit" OnClick="console.log('querySet:',document.getElementById('querySetText').value.split(' '));"/> -->
+								<md-button class="md-raised" OnClick="var querySet = document.getElementById('querySetText').value.toUpperCase().split(' '); setObsDeck(document.getElementById('sigObsDeckDiv'), querySet)">
+									submit query
+								</md-button>
+							</form>
+
+						</div>
+
+						<div id='sigObsDeckDiv'></div>
+					</md-content>
+
+				</div>
+			</section>
+		</div>
+	</body>
+</html>
