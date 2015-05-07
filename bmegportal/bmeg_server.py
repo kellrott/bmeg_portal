@@ -26,6 +26,7 @@ class MainHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([
 	#(r"/", MainHandler),
     (r"/()", tornado.web.StaticFileHandler, {"path": get_abspath("../static/"), "default_filename": "index.html"}),
+    (r"/(index.html)", tornado.web.StaticFileHandler, {"path": get_abspath("../static/")}),
 	(r"/static/(.*)", tornado.web.StaticFileHandler, {"path": get_abspath("../static/")}),
 	(r"/images/(.*)", tornado.web.StaticFileHandler, {"path": get_abspath("../static/images/")}),
 	#(r"/query", BmegGremlinQueryHandler.BmegGremlinQueryHandler),
